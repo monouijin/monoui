@@ -1,0 +1,15 @@
+# .htaccess
+RewriteEngine On
+RewriteBase /dokomori-jisaku-app/
+
+# URLの末尾にスラッシュがない場合、スラッシュを付けてリダイレクト
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ %{REQUEST_URI}/ [L,R=301]
+
+# 既存のファイルやディレクトリが存在する場合はリライトしない
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# すべてのリクエストをindex.phpにリダイレクト
+RewriteRule ^(.*)$ index.php [QSA,L]
