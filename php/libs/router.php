@@ -9,6 +9,10 @@ function route($rpath, $method) {
         
         if($rpath === '') {
             $rpath = 'home';
+        } else if($rpath === 'login/') {
+            $rpath = 'login';
+        } else if($rpath === 'register/') {
+            $rpath = 'register';
         }
         //新規
         // $targetFile = get_controller_path($rpath);
