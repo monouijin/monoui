@@ -32,8 +32,7 @@ function the_url($path)
 
 function get_url($path)
 {
-    $path = trim($path, '/');
-    return BASE_CONTEXT_PATH . '/' . $path;
+    return BASE_CONTEXT_PATH . trim($path, '/');
 }
 
 function is_alnum($val)

@@ -7,7 +7,7 @@ use Error;
 function route($rpath, $method) {
     try {
         
-        if($rpath === '/') {
+        if($rpath === '') {
             $rpath = 'home';
         }
         //新規
