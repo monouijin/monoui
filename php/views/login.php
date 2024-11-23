@@ -5,29 +5,16 @@ namespace view\login;
 function index()
 {
 ?>
-    <h1>ログイン</h1>
-    <form action="<?php echo CURRENT_URI; ?>" method="POST">
-        <div class="my-5">
-            <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
-                <form action="<?php echo CURRENT_URI; ?>" method="POST">
-                    <div class="form-group">
-                        <label for="id">ユーザーID</label>
-                        <input id="id" type="text" name="id" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">パスワード</label>
-                        <input id="pwd" type="password" name="pwd" class="form-control">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <a href="<?php the_url('register'); ?>">アカウント登録はこちら！</a>
-                        </div>
-                        <div>
-                            <input type="submit" value="ログイン" class="btn btn-primary shadow-sm">
-                        </div>
-                    </div>
-                </form>
-            </div>
+<h2 class="w3-container w3-teal">Login</h2>
+<form action="" method="POST" class="w3-container w3-padding">
+        <label for="id">Username </label>
+        <input type="text" name="id" value="<?php if(isset($_POST['id'])){ echo strip_tags($_POST['id']);}?>" class="w3-input w3-border">
+        <label for="pwd">Password</label>
+        <input type="password" name="pwd" class="w3-input w3-border">
+        <p><input type="submit" name="log" value="Login" class="w3-btn w3-teal"></p>
+        <p>アカウント登録がまだの方はこちら！</p>
+        <div>
+            <a href="<?php the_url('register') ?>" class="w3-btn w3-teal">アカウント登録</a>
         </div>
     </form>
 <?php } ?>

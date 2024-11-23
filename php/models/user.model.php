@@ -2,6 +2,8 @@
 
 namespace model;
 
+use lib\Msg;
+
 class UserModel extends AbstractModel
 {
     public string $id;
@@ -24,15 +26,15 @@ class UserModel extends AbstractModel
 
         $res = true;
         if (empty($val)) {
-            echo 'ユーザーIDを入力してください';
+            Msg::push(Msg::ERROR, 'ユーザーIDを入力してください');
         } else {
             if (strlen($val) > 10) {
-                echo 'ユーザーIDは10文字以内で入力してください';
+                Msg::push(Msg::ERROR, 'ユーザーIDは10文字以内で入力してください');
                 $res = false;
             }
 
             if (!is_alnum($val)) {
-                echo 'ユーザーIDは半角英数字入力してください';
+                Msg::push(Msg::ERROR, 'ユーザーIDは半角英数字入力してください');
                 $res = false;
             }
         }
@@ -45,15 +47,15 @@ class UserModel extends AbstractModel
         $res = true;
 
         if (empty($val)) {
-            echo 'パスワードを入力してください';
+            Msg::push(Msg::ERROR, 'パスワードを入力してください');
         } else {
             if (strlen($val) < 4) {
-                echo 'パスワードは4桁以上で入力してください。';
+                Msg::push(Msg::ERROR, 'パスワードは4桁以上で入力してください。');
                 $res = false;
             }
 
             if (!is_alnum($val)) {
-                echo 'パスワードは半角英数字で入力してください';
+                Msg::push(Msg::ERROR, 'パスワードは半角英数字で入力してください');
                 $res = false;
             }
         }
@@ -71,11 +73,11 @@ class UserModel extends AbstractModel
         $res = true;
 
         if (empty($val)) {
-            echo "ニックネームを入力してください";
+            Msg::push(Msg::ERROR, "ニックネームを入力してください");
             $res = false;
         } else {
             if (mb_strlen($val) > 10) {
-                echo 'ニックネームは10桁以下で入力してください';
+                Msg::push(Msg::ERROR, 'ニックネームは10桁以下で入力してください');
                 $res = false;
             }
         }

@@ -11,6 +11,7 @@ require_once SOURCE_BASE . 'models/abstract.model.php';
 require_once SOURCE_BASE . 'models/user.model.php';
 
 //Message
+require_once SOURCE_BASE . 'libs/message.php';
 
 //DB
 require_once SOURCE_BASE . 'db/datasource.php';
@@ -23,6 +24,8 @@ require_once SOURCE_BASE . 'partials/footer.php';
 //View
 require_once SOURCE_BASE . 'views/home.php';
 require_once SOURCE_BASE . 'views/login.php';
+require_once SOURCE_BASE . 'views/register.php';
+
 
 use function lib\route;
 
@@ -32,13 +35,23 @@ try {
     \partials\header();
 
     $url = parse_url(CURRENT_URI);
+    if($url['path'] !== '/dokomori-jisaku-app/') {
+        $url['path'] = rtrim($url['path'], '/');
+    }
     $rpath = str_replace(BASE_CONTEXT_PATH, '', $url['path']);
     $method = strtolower($_SERVER['REQUEST_METHOD']);
+    echo $url['path'];
+    echo '<br>';
+    echo BASE_CONTEXT_PATH;
+    echo '<br>';
+
 
     route($rpath, $method);
     
     \partials\footer();
 
 } catch(Throwable $e) {
+
     die('<h1>何かが凄くおかしいようです。</h1>');
+
 }

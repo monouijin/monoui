@@ -1,5 +1,4 @@
 <?php
-
 define('CURRENT_URI', $_SERVER['REQUEST_URI']);
 define('BASE_CONTEXT_PATH', rtrim('/dokomori-jisaku-app', '/') . '/');
 

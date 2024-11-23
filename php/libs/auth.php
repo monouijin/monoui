@@ -4,6 +4,7 @@ namespace lib;
 
 use db\UserQuery;
 use model\UserModel;
+use lib\Msg;
 use Throwable;
 
 class Auth
@@ -27,15 +28,15 @@ class Auth
                     $is_success = true;
                     UserModel::setSession($user);
                 } else {
-                    echo 'パスワードが一致しません';
+                    Msg::push(Msg::ERROR, 'パスワードが一致しません');
                 }
             } else {
-                echo 'ユーザーが見つかりません';
+                Msg::push(Msg::ERROR, 'ユーザーが見つかりません');
             }
         } catch (Throwable $e) {
             $is_success = false;
-            echo $e->getMessage();
-            echo 'ログイン処理でエラーが発生しました';
+            Msg::push(Msg::DEBUG, $e->getMessage());
+            Msg::push(Msg::ERROR, 'ログイン処理でエラーが発生しました');
         }
 
         return $is_success;
@@ -55,7 +56,7 @@ class Auth
             $exist_user = UserQuery::fetchById($user->id);
 
             if (!empty($exist_user)) {
-                echo 'ユーザーがすでに存在します';
+                Msg::push(Msg::ERROR, 'ユーザーがすでに存在します');
                 return false;
             }
 
@@ -66,8 +67,8 @@ class Auth
             }
         } catch (Throwable $e) {
             $is_success = false;
-            echo $e->getMessage();
-            echo 'ユーザー登録でエラーが発生しました';
+            Msg::push(Msg::DEBUG, $e->getMessage());
+            Msg::push(Msg::ERROR, 'ユーザー登録でエラーが発生しました');
         }
     }
 
@@ -77,7 +78,7 @@ class Auth
             $user = UserModel::getSession();
         } catch (Throwable $e) {
             UserModel::clearSession();
-            echo $e->getMessage();
+            Msg::push(Msg::DEBUG, $e->getMessage());
             return false;
         }
 
@@ -92,7 +93,7 @@ class Auth
         try {
             UserModel::clearSession();
         } catch(Throwable $e) {
-            echo $e->getMessage();
+            Msg::push(Msg::DEBUG, $e->getMessage());
             return false;
         }
 
@@ -101,7 +102,7 @@ class Auth
 
     public static function requireLogin() {
         if(!static::isLogin()) {
-            echo 'ログインしてください';
+            Msg::push(Msg::ERROR, 'ログインしてください');
             redirect('login');
         }
     }

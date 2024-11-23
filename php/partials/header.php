@@ -27,12 +27,13 @@ function header() {
         <a href="<?php the_url('/'); ?>" class="w3-bar-item w3-button w3-pale-green">Home</a>
         <?php if(Auth::isLogin()) :?>
             <?php //ログイン中?>
-            <a href="<?php the_url('new'); ?>" class="w3-bar-item w3-btn">New Post</a>
-            <a href="<?php the_url('admin'); ?>" class="w3-bar-item w3-btn">Admin Panel</a>
+            <!-- <a href="<?php the_url('new'); ?>" class="w3-bar-item w3-btn">New Post</a> -->
+            <!-- <a href="<?php the_url('admin'); ?>" class="w3-bar-item w3-btn">Admin Panel</a> -->
             <a href="<?php the_url('logout'); ?>" class="w3-bar-item w3-btn">Logout</a>
         <?php else : ?>
             <?php //ログインしていないとき?>
             <a href="<?php the_url('login') ?>" class="w3-bar-item w3-pale-red">Login</a>
+            <a href="<?php the_url('register') ?>" class="w3-bar-item w3-pale-red">Signup</a>
         <?php endif; ?>
     
     </div>

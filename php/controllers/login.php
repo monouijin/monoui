@@ -3,6 +3,7 @@
 namespace controller\login;
 
 use lib\Auth;
+use lib\Msg;
 use model\UserModel;
 
 function get()
@@ -18,7 +19,7 @@ function post()
     if (Auth::login($id, $pwd)) {
 
         $user = UserModel::getSession();
-        echo "{$user->nickname}さん、ようこそ。";
+        Msg::push(Msg::INFO, "{$user->nickname}さん、ようこそ。");
         redirect(GO_HOME);
 
     } else {
