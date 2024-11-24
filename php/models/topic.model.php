@@ -16,6 +16,7 @@ class TopicModel extends AbstractModel {
     public ?string $updated_by;
     public ?string $created_at;
     public ?string $updated_at;
+    public string $content;
 
     protected static $SESSION_NAME = '_topic';
 

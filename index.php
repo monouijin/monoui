@@ -22,6 +22,8 @@ require_once SOURCE_BASE . 'db/topic.query.php';
 require_once SOURCE_BASE . 'db/comment.query.php';
 
 //Partials
+require_once SOURCE_BASE . 'partials/topic-list-item.php';
+require_once SOURCE_BASE . 'partials/topic-header-item.php';
 require_once SOURCE_BASE . 'partials/header.php';
 require_once SOURCE_BASE . 'partials/footer.php';
 
@@ -29,6 +31,7 @@ require_once SOURCE_BASE . 'partials/footer.php';
 require_once SOURCE_BASE . 'views/home.php';
 require_once SOURCE_BASE . 'views/login.php';
 require_once SOURCE_BASE . 'views/register.php';
+require_once SOURCE_BASE . 'views/topic/detail.php';
 
 
 use function lib\route;
