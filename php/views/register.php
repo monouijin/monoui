@@ -11,7 +11,7 @@ function index() {
         <input type="password" name="pwd" class="w3-input w3-border">
         <label for="nickname">Nickname</label>
         <input type="text" name="nickname" class="w3-input w3-border">
-        <p><input type="submit" name="log" value="アカウント登録" class="w3-btn w3-teal"></p>
+        <p><input type="submit" name="log" value="アカウント登録" class="w3-btn w3-teal mt-3"></p>
     </form>
 <?php 
 }
