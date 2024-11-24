@@ -2,7 +2,7 @@
 namespace partials;
 
 use lib\Auth;
-use model\UserModel;
+use lib\Msg;
 
 function header() {
 ?>
@@ -40,9 +40,11 @@ function header() {
         <?php endif; ?>
     
     </div>
+    <main class="container py-3"></main>
 </body>
 
 </html>
 <?php
+Msg::flush();
 }
 ?>

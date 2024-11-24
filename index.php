@@ -44,11 +44,6 @@ try {
     }
     $rpath = str_replace(BASE_CONTEXT_PATH, '', $url['path']);
     $method = strtolower($_SERVER['REQUEST_METHOD']);
-    echo $url['path'];
-    echo '<br>';
-    echo BASE_CONTEXT_PATH;
-    echo '<br>';
-    echo BASE_CSS_PATH . 'style.css';
 
     route($rpath, $method);
     
