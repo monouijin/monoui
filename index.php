@@ -44,7 +44,7 @@ try {
     echo '<br>';
     echo BASE_CONTEXT_PATH;
     echo '<br>';
-
+    echo BASE_CSS_PATH . 'style.css';
 
     route($rpath, $method);
     
