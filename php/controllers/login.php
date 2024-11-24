@@ -24,5 +24,6 @@ function post()
 
     } else {
         redirect(GO_REFERER);
+        
     }
 }
