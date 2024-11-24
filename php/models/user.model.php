@@ -83,7 +83,7 @@ class UserModel extends AbstractModel
         }
     }
 
-    public function isValidNicknae()
+    public function isValidNickname()
     {
         return static::validateNickname($this->nickname);
     }

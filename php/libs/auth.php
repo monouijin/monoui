@@ -89,19 +89,21 @@ class Auth
         }
     }
 
-    public static function logout() {
+    public static function logout()
+    {
         try {
             UserModel::clearSession();
-        } catch(Throwable $e) {
+        } catch (Throwable $e) {
             Msg::push(Msg::DEBUG, $e->getMessage());
             return false;
         }
 
-        return false;
+        return true;
     }
 
-    public static function requireLogin() {
-        if(!static::isLogin()) {
+    public static function requireLogin()
+    {
+        if (!static::isLogin()) {
             Msg::push(Msg::ERROR, 'ログインしてください');
             redirect('login');
         }
