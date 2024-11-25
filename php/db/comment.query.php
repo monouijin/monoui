@@ -35,18 +35,18 @@ class CommentQuery {
     }
 
 
-    // public static function insert($user) {
+    public static function insert($user) {
 
-    //     $db = new DataSource;
-    //     $sql = 'insert into users(id, pwd, nickname) values (:id, :pwd, :nickname)';
+        $db = new DataSource;
+        $sql = 'insert into users(id, pwd, nickname) values (:id, :pwd, :nickname)';
 
-    //     $user->pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
+        $user->pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
 
-    //     return $db->execute($sql, [
-    //         ':id' => $user->id,
-    //         ':pwd' => $user->pwd,
-    //         ':nickname' => $user->nickname,
-    //     ]);
+        return $db->execute($sql, [
+            ':id' => $user->id,
+            ':pwd' => $user->pwd,
+            ':nickname' => $user->nickname,
+        ]);
 
-    // }
+    }
 }

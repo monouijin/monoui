@@ -74,11 +74,11 @@ function comment_form($topic)
                 <div class="row h4 form-group">
                     <div class="col-auto d-flex align-items-center pl-0">
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" id="agree" name="agree" value="1" checked>
+                            <input class="form-check-input" type="radio" id="agree" name="agree" value="1" required checked>
                             <label for="agree" class="form-check-label">賛成</label>
                         </div>
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" id="disagree" name="disagree" value="0">
+                            <input class="form-check-input" type="radio" id="disagree" name="agree" value="0" required>
                             <label for="disagree" class="form-check-label">反対</label>
                         </div>
 

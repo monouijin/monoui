@@ -1,13 +1,16 @@
-<?php 
+<?php
+
 namespace db;
 
 use db\DataSource;
 use model\TopicModel;
 
-class TopicQuery {
-    public static function fetchByUserId($user) {
+class TopicQuery
+{
+    public static function fetchByUserId($user)
+    {
 
-        if(!$user->isValidId()) {
+        if (!$user->isValidId()) {
             return false;
         }
 
@@ -19,11 +22,11 @@ class TopicQuery {
         ], DataSource::CLS, TopicModel::class);
 
         return $result;
-
     }
 
 
-    public static function fetchPublishedTopics() {
+    public static function fetchPublishedTopics()
+    {
 
         $db = new DataSource;
         $sql = '
@@ -41,15 +44,15 @@ class TopicQuery {
         $result = $db->select($sql, [], DataSource::CLS, TopicModel::class);
 
         return $result;
-
     }
 
-    public static function fetchById($topic) {
+    public static function fetchById($topic)
+    {
 
-        if(!$topic->isValidId()) {
+        if (!$topic->isValidId()) {
             return false;
         }
-        
+
         $db = new DataSource;
         $sql = '
         select 
@@ -68,49 +71,55 @@ class TopicQuery {
         ], DataSource::CLS, TopicModel::class);
 
         return $result;
-
     }
 
-    public static function incrementViewCount($topic) {
-        if(!$topic->isValidId()) {
+    public static function incrementViewCount($topic)
+    {
+
+        if (!$topic->isValidId()) {
             return false;
         }
 
         $db = new DataSource;
 
-        $sql = 'update topics set views = views + 1 where id = :id';
+        $sql = 'update topics set views = views + 1 where id = :id;';
 
         return $db->execute($sql, [
             ':id' => $topic->id
         ]);
-
     }
 
-    public static function isUserOwnTopic($topic_id, $user) {
+    public static function isUserOwnTopic($topic_id, $user)
+    {
 
-        if(!(TopicModel::validateId($topic_id) && $user->isValidId())) {
+        if (!(TopicModel::validateId($topic_id) && $user->isValidId())) {
             return false;
         }
-        
+
         $db = new DataSource;
         $sql = '
-        select count(1) as count from topics t
+        select count(1) from pollapp.topics t 
         where t.id = :topic_id
-        and t.user_id = :user_id
-        and t.del_flg != 1;
+            and t.user_id = :user_id
+            and t.del_flg != 1;
         ';
 
         $result = $db->selectOne($sql, [
             ':topic_id' => $topic_id,
-            ':user_id' => $user->id
+            ':user_id' => $user->id,
         ]);
 
-        return !empty($result) && $result['count'] != 0 ;
+        return $result;
     }
 
-    public static function update($topic) {
+    public static function update($topic)
+    {
 
-        //値のチェック
+        if (!($topic->isValidId()
+            * $topic->isValidTitle()
+            * $topic->isValidPublished())) {
+            return false;
+        }
 
         $db = new DataSource;
         $sql = 'update topics set published = :published, title = :title where id = :id';
@@ -120,22 +129,51 @@ class TopicQuery {
             ':title' => $topic->title,
             ':id' => $topic->id,
         ]);
-
     }
 
+    public static function insert($topic, $user)
+    {
 
-    // public static function insert($user) {
+        if (!($user->isValidId()
+            * $topic->isValidTitle()
+            * $topic->isValidContent()
+            * $topic->isValidPublished())) {    
+            return false;
+        }
 
-    //     $db = new DataSource;
-    //     $sql = 'insert into users(id, pwd, nickname) values (:id, :pwd, :nickname)';
+        $db = new DataSource;
+        $sql = 'insert into topics(title, content ,published, user_id) values (:title, :content ,:published, :user_id)';
 
-    //     $user->pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
+        return $db->execute($sql, [
+            ':title' => $topic->title,
+            ':content' => $topic->content,
+            ':published' => $topic->published,
+            ':user_id' => $user->id,
+        ]);
+    }
 
-    //     return $db->execute($sql, [
-    //         ':id' => $user->id,
-    //         ':pwd' => $user->pwd,
-    //         ':nickname' => $user->nickname,
-    //     ]);
+    public static function incrementLikesOrDislikes($comment)
+    {
 
-    // }
+        if (!($comment->isValidTopicId()
+            * $comment->isValidAgree())) {
+            return false;
+        }
+
+        $db = new DataSource;
+        
+        if($comment->agree) {
+
+            $sql = 'update topics set likes = likes + 1 where id = :topic_id';
+            
+        } else {
+
+            $sql = 'update topics set dislikes = dislikes + 1 where id = :topic_id';
+
+        }
+
+        return $db->execute($sql, [
+            ':topic_id' => $comment->topic_id
+        ]);
+    }
 }

@@ -38,8 +38,7 @@ function header()
             <?php if (Auth::isLogin()) : ?>
                 <?php //ログイン中
                 ?>
-                <!-- <a href="<?php the_url('new'); ?>" class="w3-bar-item w3-btn">New Post</a> -->
-                <!-- <a href="<?php the_url('admin'); ?>" class="w3-bar-item w3-btn">Admin Panel</a> -->
+                <a href="<?php the_url('topic/create'); ?>" class="w3-bar-item w3-btn">投稿</a>
                 <a href="<?php the_url('logout'); ?>" class="w3-bar-item w3-btn">Logout</a>
             <?php else : ?>
                 <?php //ログインしていないとき
