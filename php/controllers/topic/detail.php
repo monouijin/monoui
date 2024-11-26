@@ -65,16 +65,12 @@ function post()
 
             $db->commit();
             Msg::push(Msg::INFO, 'コメントの登録に成功しました。');
-
         } else {
 
             $db->rollback();
             Msg::push(Msg::ERROR, 'コメントの登録に失敗しました。');
-
         }
-
     }
 
     redirect('topic/detail?topic_id=' . $comment->topic_id);
-    
 }
