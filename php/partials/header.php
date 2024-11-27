@@ -39,6 +39,7 @@ function header()
                 <?php //ログイン中
                 ?>
                 <a href="<?php the_url('topic/create'); ?>" class="w3-bar-item w3-btn">投稿する</a>
+                <a href="<?php the_url('search') ?>" class="w3-bar-item w3-btn">検索</a>
                 <a href="<?php the_url('logout'); ?>" class="w3-bar-item w3-btn">Logout</a>
             <?php else : ?>
                 <?php //ログインしていないとき
@@ -49,16 +50,6 @@ function header()
 
         </div>
         <main class="container py-3">
-            <div class="w3-container">
-                <form action="<?php SOURCE_BASE ?>search.php" method="GET" class="w3-container">
-                    <p>
-                        <input type="text" name="search_topic" class="w3-input w3-border" placeholder="Search for Anything" required>
-                    </p>
-                    <p>
-                        <input type="submit" class="w3-btn w3-teal w3-round " value="探す">
-                    </p>
-                </form>
-            </div>
         </main>
     </body>
 
