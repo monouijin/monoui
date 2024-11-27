@@ -23,3 +23,109 @@ $cDislikesRed: #f87171;
         @extend .shadow;
     }
 }
+
+
+
+// .topic-card {
+//     transition: all 0.3s ease;
+//     overflow: hidden;
+// }
+
+// .topic-card:hover {
+//     transform: translateY(-5px);
+//     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+// }
+
+// .topic-stats {
+//     background-color: #f8f9fa;
+//     border-radius: 10px;
+//     padding: 15px 0;
+// }
+
+// .topic-stats-item {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .topic-stats-number {
+//     font-weight: 700;
+//     color: #495057;
+//     font-size: 1.5rem;
+// }
+
+// .topic-stats-label {
+//     color: #868e96;
+//     font-size: 0.85rem;
+//     text-transform: uppercase;
+// }
+
+// .status-badge {
+//     font-size: 0.75rem;
+//     padding: 0.25em 0.5em;
+// }
+
+// .topic-title {
+//     text-decoration: none;
+//     color: #212529;
+//     transition: color 0.3s ease;
+// }
+
+// .topic-title:hover {
+//     color: #0d6efd;
+// }
+
+// .svg-icon {
+//     margin-right: 5px;
+//     margin-bottom: 3px;
+// }
+
+// .comment-card {
+//     transition: all 0.3s ease;
+//     border-left: 4px solid transparent;
+// }
+
+// .comment-card:hover {
+//     transform: translateY(-5px);
+//     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+// }
+
+// .comment-card.agree-comment {
+//     border-left-color: #28a745;
+// }
+
+// .comment-card.disagree-comment {
+//     border-left-color: #dc3545;
+// }
+
+// .comment-body {
+//     color: #495057;
+//     font-weight: 400;
+//     line-height: 1.6;
+// }
+
+// .comment-meta {
+//     color: #868e96;
+//     font-size: 0.875rem;
+//     display: flex;
+//     align-items: center;
+//     margin-top: 0.5rem;
+// }
+
+// .comment-badge {
+//     font-size: 0.75rem;
+//     margin-right: 0.5rem;
+//     padding: 0.25em 0.5em;
+// }
+
+// .comment-nickname {
+//     font-weight: 500;
+//     color: #495057;
+// }
+
+// .comments-container {
+//     max-width: 800px;
+//     margin: 0 auto;
+//     padding: 1rem;
+// }

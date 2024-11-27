@@ -64,7 +64,7 @@ function comment_form($topic)
 
     <?php if (Auth::isLogin()) : ?>
         <form action="<?php the_url('topic/detail'); ?>" method="POST">
-            <span class="h4">あなたは賛成？それとも反対？</span>
+            <span class="h4">コメントを書き込もう！</span>
             <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
             <div class="form-group">
                 <textarea class="w-100 form-control border border-primary" name="body" id="body" rows="5"></textarea>
