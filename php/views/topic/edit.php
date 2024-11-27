@@ -27,7 +27,7 @@ function index($topic, $is_edit)
             </div>
             <div class="d-flex align-items-center">
                 <div>
-                    <input type="submit" value="送信" class="btn btn-primary shadow-sm mr-3">
+                    <input type="submit" value="投稿する" class="btn btn-primary shadow-sm mr-3">
                 </div>
                 <div>
                     <a href="<?php the_url(GO_HOME) ?>">戻る</a>

@@ -131,4 +131,27 @@ class Auth
             redirect('login');
         }
     }
+
+    public static function searchTopic($search_topic) {
+
+        try {
+            
+            $is_success = false;
+
+            $topic_by_search = TopicQuery::searchTopicQuery($search_topic);
+            if(empty($topic_by_search)) {
+
+                Msg::push(Msg::ERROR, 'トピックが見つかりません');
+
+            } else {
+
+                $is_success = true;
+            }
+            } catch(Throwable $e) {
+                $is_success = false;
+                Msg::push(Msg::ERROR, '検索処理でエラーが発生しました');
+            }
+
+            return $is_success;
+    }
 }

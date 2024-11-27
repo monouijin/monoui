@@ -176,4 +176,16 @@ class TopicQuery
             ':topic_id' => $comment->topic_id
         ]);
     }
+
+    public static function searchTopicQuery($search_topic) {
+
+        $db = new DataSource();
+        $sql = "select * from topics where title like :title and del_flg != 1 order by id desc;";
+
+        $result = $db->select($sql, [
+            ':title' => '%' . $search_topic . '%'
+        ], DataSource::CLS, TopicModel::class);
+
+        return $result;
+    }
 }

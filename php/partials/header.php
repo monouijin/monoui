@@ -14,7 +14,7 @@ function header()
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Dokomori</title>
         <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="//fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@ function header()
             <?php if (Auth::isLogin()) : ?>
                 <?php //ログイン中
                 ?>
-                <a href="<?php the_url('topic/create'); ?>" class="w3-bar-item w3-btn">投稿</a>
+                <a href="<?php the_url('topic/create'); ?>" class="w3-bar-item w3-btn">投稿する</a>
                 <a href="<?php the_url('logout'); ?>" class="w3-bar-item w3-btn">Logout</a>
             <?php else : ?>
                 <?php //ログインしていないとき
@@ -48,7 +48,18 @@ function header()
             <?php endif; ?>
 
         </div>
-        <main class="container py-3"></main>
+        <main class="container py-3">
+            <div class="w3-container">
+                <form action="<?php SOURCE_BASE ?>search.php" method="GET" class="w3-container">
+                    <p>
+                        <input type="text" name="search_topic" class="w3-input w3-border" placeholder="Search for Anything" required>
+                    </p>
+                    <p>
+                        <input type="submit" class="w3-btn w3-teal w3-round " value="探す">
+                    </p>
+                </form>
+            </div>
+        </main>
     </body>
 
     </html>
