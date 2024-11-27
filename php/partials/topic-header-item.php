@@ -10,7 +10,7 @@ function topic_header_item($topic, $from_top_page)
     <div class="container">
         <div class="row">
             <div class="col my-5">
-                <!-- 右側 -->
+                <!-- 上-->
                 <?php topic_main($topic, $from_top_page); ?>
                 <?php comment_form($topic); ?>
             </div>
@@ -64,30 +64,66 @@ function comment_form($topic)
 
     <?php if (Auth::isLogin()) : ?>
         <form action="<?php the_url('topic/detail'); ?>" method="POST">
-            <span class="h4">コメントを書き込もう！</span>
-            <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
-            <div class="form-group">
-                <textarea class="w-100 form-control border border-primary" name="body" id="body" rows="5"></textarea>
-            </div>
-
-            <div class="container">
-                <div class="row h4 form-group">
-                    <div class="col-auto d-flex align-items-center pl-0">
-                        <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" id="agree" name="agree" value="1" required checked>
-                            <label for="agree" class="form-check-label">賛成</label>
-                        </div>
-                        <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" id="disagree" name="agree" value="0" required>
-                            <label for="disagree" class="form-check-label">反対</label>
-                        </div>
-
-                    </div>
-                    <input type="submit" value="送信" class="col btn btn-success shadow-sm">
+                <h2 class="comment-title h4">コメントを書き込もう！</h2>
+                
+                <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
+                
+                <div class="textarea-container">
+                    <textarea 
+                        class="form-control comment-textarea" 
+                        name="body" 
+                        id="body" 
+                        rows="5" 
+                        placeholder="あなたの意見をここに書いてください..."
+                        required
+                    ></textarea>
                 </div>
-            </div>
 
-        </form>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="opinion-selector">
+                            <span class="opinion-label">立場:</span>
+                            <div class="d-flex">
+                                <div class="form-check me-3">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="radio" 
+                                        id="agree" 
+                                        name="agree" 
+                                        value="1" 
+                                        required 
+                                        checked
+                                    >
+                                    <label for="agree" class="form-check-label">
+                                        賛成
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="radio" 
+                                        id="disagree" 
+                                        name="agree" 
+                                        value="0" 
+                                        required
+                                    >
+                                    <label for="disagree" class="form-check-label">
+                                        反対
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <button 
+                            type="submit" 
+                            class="btn btn-success submit-btn shadow-sm"
+                        >
+                            コメントを送信
+                        </button>
+                    </div>
+                </div>
+            </form>
     <?php else : ?>
         <div class="text-center mt-5">
             <div class="mb-2">ログインしてチャットに参加しよう！</div>

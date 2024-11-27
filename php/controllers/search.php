@@ -1,6 +1,6 @@
 <?php
 namespace controller\search;
-
+    
 use db\TopicQuery;
 use lib\Msg;
 

@@ -9189,3 +9189,76 @@ a.text-dark:hover, a.text-dark:focus {
 .topic {
   transition: box-shadow 0.3s;
 }
+.comment-form-container:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.comment-title {
+  color: #212529;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.comment-title::before {
+  content: "💬";
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.textarea-container {
+  margin-bottom: 20px;
+}
+
+.comment-textarea {
+  resize: vertical;
+  min-height: 150px;
+  border: 2px solid #6c757d;
+  transition: all 0.3s ease;
+}
+
+.comment-textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.opinion-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.opinion-label {
+  margin-right: 20px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-check-input:checked + .form-check-label {
+  font-weight: bold;
+}
+
+.submit-btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+  .opinion-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .opinion-label {
+    margin-bottom: 10px;
+  }
+}
